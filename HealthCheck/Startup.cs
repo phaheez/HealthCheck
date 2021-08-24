@@ -32,12 +32,17 @@ namespace HealthCheck
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHealthChecks().AddCheck<MemoryHealthCheck>("Memory", HealthStatus.Degraded, new[] { "ready" });
-            services.AddHealthChecks().AddDbContextCheck<EmployeeContext>("Database", HealthStatus.Unhealthy, new[] { "ready" });
+            //Memory
+            services.AddHealthChecks()
+                .AddCheck<MemoryHealthCheck>("Memory", HealthStatus.Degraded, new[] { "ready" })
+                .AddDbContextCheck<EmployeeContext>("Database", HealthStatus.Degraded, new[] { "ready" })
+                .AddUrlGroup(new Uri("https://localhost:44347/api/ping"), "API", HealthStatus.Degraded, new[] { "ready" });
             
             services.AddHealthChecksUI(opt =>
             {
-                opt.SetEvaluationTimeInSeconds(15); //time in seconds between check
+                opt.SetEvaluationTimeInSeconds(10); //time in seconds between check
+                opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks    
+                opt.SetApiMaxActiveRequests(3); //api requests concurrency
             }).AddInMemoryStorage();
 
             services.AddDbContext<EmployeeContext>(options =>

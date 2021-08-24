@@ -1,0 +1,75 @@
+﻿https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+
+Health Checks
+HealthChecks packages include health checks for:
+
+Sql Server
+MySql
+Oracle
+Sqlite
+RavenDB
+Postgres
+EventStore
+RabbitMQ
+IbmMQ
+Elasticsearch
+CosmosDb
+Solr
+Redis
+SendGrid
+System: Disk Storage, Private Memory, Virtual Memory, Process, Windows Service
+Azure Service Bus: EventHub, Queue and Topics
+Azure Storage: Blob, Queue and Table
+Azure Key Vault
+Azure DocumentDb
+Azure IoT Hub
+Amazon DynamoDb
+Amazon S3
+Google Cloud Firestore
+Network: Ftp, SFtp, Dns, Tcp port, Smtp, Imap, Ssl
+MongoDB
+Kafka
+Identity Server
+Uri: single uri and uri groups
+Consul
+Hangfire
+SignalR
+Kubernetes
+ArangoDB
+Gremlin
+We support netcoreapp 2.2, 3.0 and 3.1. Please use package versions 2.2.X, 3.0.X and 3.1.X to target different versions.
+
+Install-Package AspNetCore.HealthChecks.System
+Install-Package AspNetCore.HealthChecks.Network
+Install-Package AspNetCore.HealthChecks.SqlServer
+Install-Package AspNetCore.HealthChecks.MongoDb
+Install-Package AspNetCore.HealthChecks.Npgsql
+Install-Package AspNetCore.HealthChecks.Elasticsearch
+Install-Package AspNetCore.HealthChecks.CosmosDb
+Install-Package AspNetCore.HealthChecks.Solr
+Install-Package AspNetCore.HealthChecks.Redis
+Install-Package AspNetCore.HealthChecks.EventStore
+Install-Package AspNetCore.HealthChecks.AzureStorage
+Install-Package AspNetCore.HealthChecks.AzureServiceBus
+Install-Package AspNetCore.HealthChecks.AzureKeyVault
+Install-Package AspNetCore.HealthChecks.Azure.IoTHub
+Install-Package AspNetCore.HealthChecks.MySql
+Install-Package AspNetCore.HealthChecks.DocumentDb
+Install-Package AspNetCore.HealthChecks.SqLite
+Install-Package AspNetCore.HealthChecks.RavenDB
+Install-Package AspNetCore.HealthChecks.Kafka
+Install-Package AspNetCore.HealthChecks.RabbitMQ
+Install-Package AspNetCore.HealthChecks.IbmMQ
+Install-Package AspNetCore.HealthChecks.OpenIdConnectServer
+Install-Package AspNetCore.HealthChecks.DynamoDB
+Install-Package AspNetCore.HealthChecks.Oracle
+Install-Package AspNetCore.HealthChecks.Uris
+Install-Package AspNetCore.HealthChecks.Aws.S3
+Install-Package AspNetCore.HealthChecks.Consul
+Install-Package AspNetCore.HealthChecks.Hangfire
+Install-Package AspNetCore.HealthChecks.SignalR
+Install-Package AspNetCore.HealthChecks.Kubernetes
+Install-Package AspNetCore.HealthChecks.Gcp.CloudFirestore
+Install-Package AspNetCore.HealthChecks.SendGrid
+Install-Package AspNetCore.HealthChecks.ArangoDb
+Install-Package AspNetCore.HealthChecks.Gremlin
