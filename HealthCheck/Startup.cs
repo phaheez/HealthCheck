@@ -34,15 +34,16 @@ namespace HealthCheck
         {
             //Memory
             services.AddHealthChecks()
-                .AddCheck<MemoryHealthCheck>("Memory", HealthStatus.Degraded, new[] { "ready" })
-                .AddDbContextCheck<EmployeeContext>("Database", HealthStatus.Degraded, new[] { "ready" })
-                .AddUrlGroup(new Uri("https://localhost:44347/api/ping"), "API", HealthStatus.Degraded, new[] { "ready" });
+                .AddCheck<MemoryHealthCheck>("Memory", HealthStatus.Degraded, new[] { "memory", "ready" })
+                .AddSqlServer(Configuration.GetConnectionString("DefaultConnection"),"SELECT 1","SQLServer", HealthStatus.Degraded, new[] { "sqlserver", "ready" })
+                .AddDbContextCheck<EmployeeContext>("Database", HealthStatus.Degraded, new[] { "entity-framework", "ready" })
+                .AddUrlGroup(new Uri("https://localhost:44347/api/ping"), "API", HealthStatus.Degraded, new[] { "api", "ready" });
             
             services.AddHealthChecksUI(opt =>
             {
                 opt.SetEvaluationTimeInSeconds(10); //time in seconds between check
                 opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks    
-                opt.SetApiMaxActiveRequests(3); //api requests concurrency
+                opt.SetApiMaxActiveRequests(1); //api requests concurrency
             }).AddInMemoryStorage();
 
             services.AddDbContext<EmployeeContext>(options =>
